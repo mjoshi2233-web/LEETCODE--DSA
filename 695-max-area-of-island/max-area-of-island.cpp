@@ -5,7 +5,7 @@ public:
             int m=grid.size();
             int n=grid[0].size();
             if( i>=m  || j>=n || i<0 || j<0|| grid[i][j]==0){
-                return 0;
+                return 1;
             }
             ans+=1;
             grid[i][j]=0;

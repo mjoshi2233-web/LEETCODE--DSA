@@ -14,9 +14,9 @@ public:
             if(nums[i]/j!=j){
                 count++;
                 summ+=nums[i]/j;
-            }
+            }}
             if(count>4){break;}
-          }}
+          }
           if(count==4){   total+=summ;
         }}
         return total;

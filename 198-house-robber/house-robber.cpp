@@ -1,19 +1,20 @@
 class Solution {
 public:
+int check(int ind,vector<int> &nums,vector<int> &dp){
+    if(ind==nums.size()-1){
+        return nums[ind];
+
+    }
+    if(ind>=nums.size()){return 0;}
+    if(dp[ind]!=-1){return dp[ind];}
+    int take=nums[ind]+check(ind+2,nums,dp);
+    int nottake=check(ind+1,nums,dp);
+    return dp[ind]=max(take,nottake);
+}
     int rob(vector<int>& nums) {
-        int prev=nums[0];
-        int prev2=0;int curr=nums[0];
-        for(int i=1;i<nums.size();i++){
-            int take=nums[i];
-            take+=prev2;
-            int nottake=prev;
-             curr=max(take,nottake);
-             prev2=prev;
-            prev=curr;
-           
-
-
-        }
-        return curr;
+        vector<int> dp(nums.size(),-1);
+        int ans=check(0,nums,dp);
+        return ans;
+        
     }
 };

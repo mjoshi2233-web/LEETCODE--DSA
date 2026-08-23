@@ -22,7 +22,7 @@ public:
            first->next=second;
 
            temp=second;
-           head=second->next;
+           head=head->next;
 
 
         }

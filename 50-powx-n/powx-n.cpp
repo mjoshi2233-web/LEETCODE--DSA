@@ -1,25 +1,29 @@
 class Solution {
 public:
-    double myPow(double x, int n) {
-        long long bin,i=1;
-        double ans=1.0;
-        bin=n;
-        if (x==1){return 1.0;}
-        if (n==0){return 1.0;}
-        if (x==-1 && n%2==0){return 1.0;}
-         if (x==-1 && n%2==1){return -1.0;}
-        if (n<0){
-            x=1/x;
-            bin=-bin;
+    double myPow(double x, int y) {
+       int check=0;
+       long long n=y;
+       if(n==0 || x==1){return 1;}
+       if(x==0){
+        return 0;
+       }
+       if(n<0){
+        check=1;
+        n=-n;
+       }
+       double ans=1;
+       while(n!=0){
+        if(n%2==1){
+            ans=ans*x;
+            n-=1;
         }
-        while(bin!=0){
-        if (bin>0){
-            if (bin%2==1){
-                ans*=x;
-            }
+        else{
+            x*=x;
+            n/=2;
         }
-        bin/=2;
-        x*=x;}return ans;
-        
+
+       }
+       if(check==1){return 1/ans;}
+       return ans;
     }
 };

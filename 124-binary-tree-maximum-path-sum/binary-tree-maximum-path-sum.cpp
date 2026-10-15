@@ -13,13 +13,11 @@ class Solution {
 public:
     int check(TreeNode* root, int & ans){
         if(root==NULL){return 0;}
-        int left=check(root->left,ans);
-        int right=check(root->right,ans);
-        int temp=max(left,right);
-        int x=max(temp+root->val,root->val);
-        int x2=max(x,left+right+root->val);
-        ans=max(ans,x2);
-        return max(root->val,max(left,right)+root->val);
+        int left=max(0,check(root->left,ans));
+        int right=max(0,check(root->right,ans));
+       
+        ans=max(ans,left+right+root->val);
+        return max(left,right)+root->val;
 
     }
     int maxPathSum(TreeNode* root) {

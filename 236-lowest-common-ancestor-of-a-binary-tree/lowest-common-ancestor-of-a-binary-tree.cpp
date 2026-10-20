@@ -13,6 +13,7 @@ public:
 if(root==NULL ||root==p || root==q ){return root;}
 TreeNode* left=check(root->left,p,q);
 TreeNode* right=check(root->right,p,q);
+if(left==NULL && right==NULL){return NULL;}
 if(left==NULL){return right;}
 if(right==NULL){return left;}
 return root;

@@ -4,25 +4,29 @@ public:
      
       priority_queue<long long, vector<long long>, greater<long long>> pq;
       unordered_set<long long> st;
-      long long ans=1;
+      long long first=1,second=1,third=1;
       pq.push(1);
       st.insert(1);
-      for(int i=1;i<=n;i++){
-        ans=pq.top();
+      for(int i=1;i<n;i++){
+        long long temp=pq.top();
         pq.pop();
-        if(st.find(ans*2)==st.end()){
-            pq.push(ans*2);
-            st.insert(ans*2);
+       first=temp*2;
+       second=temp*3;
+       third=temp*5;
+        if(st.find(first)==st.end()){
+            pq.push(first);
+            st.insert(first);
         }
-          if(st.find(ans*3)==st.end()){
-            pq.push(ans*3);
-            st.insert(ans*3);
+          if(st.find(second)==st.end()){
+            pq.push(second);
+            st.insert(second);
         }
-          if(st.find(ans*5)==st.end()){
-            pq.push(ans*5);
-            st.insert(ans*5);
+          if(st.find(third)==st.end()){
+            pq.push(third);
+            st.insert(third);
         }
       }
-     return ans;
+     
+     return pq.top();
     }
 };
